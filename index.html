@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chent Official - PixelLab Pro MOD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff6600;
+            --secondary: #333333;
+            --accent: #ff9900;
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --light: #f5f5f5;
+            --gray: #404040;
+            --card-bg: #262626;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 102, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 153, 0, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* App Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 30px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--gray);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .app-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .app-info p {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        /* Features Section */
+        .features-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-card i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-card span {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Download Section */
+        .download-section {
+            margin-bottom: 30px;
+        }
+
+        .download-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--gray);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-info {
+            margin-bottom: 20px;
+        }
+
+        .download-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .download-info p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .download-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 102, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .download-link:hover {
+            background: rgba(255, 102, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .link-info {
+            flex: 1;
+        }
+
+        .link-info .file-name {
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 5px;
+        }
+
+        .link-info .file-details {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .download-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+        }
+
+        /* Description Section */
+        .description-section {
+            margin-bottom: 40px;
+        }
+
+        .description-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--gray);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .description-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .description-card p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 30px 0 15px;
+            text-align: center;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            color: var(--light);
+            margin: 0 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            padding-top: 15px;
+            border-top: 1px solid var(--gray);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+            }
+
+            .nav-links li {
+                margin: 0 10px;
+            }
+
+            .app-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .app-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .app-meta {
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .download-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .download-btn {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-cube"></i>
+                    Chent Official
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Aplikasi</a></li>
+                    <li><a href="#">Game</a></li>
+                    <li><a href="#">Tentang</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="#">Home</a> &gt; <a href="#">Aplikasi</a> &gt; <span>PixelLab Pro MOD</span>
+        </div>
+
+        <!-- App Header -->
+        <div class="app-header">
+            <div class="app-icon">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <div class="app-info">
+                <h1>PIXELLAB MOD</h1>
+                <p>PREMIUM UNLOCKED | NO ADS / IKLAN | MAIN UI</p>
+                <div class="app-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-download"></i>
+                        <span>30 PLP JB</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        <span>CHENT</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span>PXL PRO V2.1.0.09</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-palette"></i>
+                        <span>DARK ORANGE UI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">Fitur MOD</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-lock-open"></i>
+                    <span>Premium Unlocked</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-ad"></i>
+                    <span>No Ads / Iklan</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Main UI</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-times-circle"></i>
+                    <span>No Force Close</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fab fa-android"></i>
+                    <span>Support Android 15</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bug"></i>
+                    <span>No Bug</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Stable Mod</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-star"></i>
+                    <span>New Features</span>
+                </div>
+                    <div class="feature-card">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Dev : RmdzAV Official</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <h2 class="section-title">Unduh Aplikasi</h2>
+            <div class="download-card">
+                <div class="download-info">
+                    <h3>PixelLab Pro V2.1.0.09 | DARK ORANGE UI</h3>
+                    <p>Unduh versi terbaru PixelLab Pro MOD dengan semua fitur premium terbuka dan tanpa iklan.</p>
+                </div>
+                <div class="download-links">
+                    <div class="download-link">
+                        <div class="link-info">
+                            <div class="file-name">PXL PRO V2.1.0.09</div>
+                            <div class="file-details">
+                                <span>Ukuran: 155MB</span>
+                                <span>Keterangan: Server Link</span>
+                            </div>
+                        </div>
+                       <a href="https://sfl.gl/PKtGKA" class="download-btn" target="_blank">Download</a>
+                    </div>
+                    <div class="download-link">
+                        <div class="link-info">
+                            <div class="file-name">Features Password</div>
+                            <div class="file-details">
+                                <span>Ukuran: -</span>
+                                <span>Keterangan: Server Link</span>
+                            </div>
+                        </div>
+                       <a href="https://sfl.gl/PKtGKA" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Description Section -->
+        <section class="description-section">
+            <h2 class="section-title">Tentang Aplikasi</h2>
+            <div class="description-card">
+                <p>PixelLab adalah salah satu aplikasi desain grafis berbasis mobile yang cukup populer, terutama di kalangan pengguna Android. Dengan fitur-fitur lengkap dan antarmuka yang sederhana, aplikasi ini memudahkan siapa pun untuk membuat desain visual menarik langsung dari ponsel.</p>
+                
+                <p>Salah satu keunggulan utama PixelLab adalah kemampuannya dalam menambahkan teks ke gambar. Tak hanya teks biasa, pengguna juga bisa membuat teks 3D yang dapat diputar dan disesuaikan sudutnya, memberikan efek visual yang lebih dinamis. Selain itu, tersedia banyak pilihan font, efek bayangan, stroke, dan bahkan fitur untuk menambahkan latar belakang khusus pada teks.</p>
+                
+                <p>PixelLab juga menyediakan berbagai stiker emoji, dan bentuk vektor yang bisa langsung disisipkan ke dalam desain. Bagi yang suka bereksperimen, fitur penghapusan latar belakang dan pengeditan perspektif sangat berguna, misalnya untuk membuat mockup atau mengganti isi layar pada foto.</p>
+                
+                <p>Bukan hanya soal teks, PixelLab dilengkapi dengan berbagai filter dan efek gambar seperti vignette, hue, saturation, serta opsi untuk menyesuaikan kecerahan dan kontras. Semua ini membuat aplikasi ini layak disebut sebagai salah satu tools desain paling serbaguna untuk pengguna mobile.</p>
+                
+                <p>Bagi pengguna yang ingin mengeksplorasi lebih jauh, tersedia juga versi modifikasi (MOD) dari Pixellab yang membuka lebih banyak fitur premium secara gratis. Versi ini bisa menjadi alternatif menarik bagi kamu yang ingin mendapatkan pengalaman desain tanpa batasan fitur. Tentunya, pastikan kamu mengunduh dari sumber terpercaya dan tetap bijak dalam menggunakannya.</p>
+                
+                <p>Dengan segala keunggulannya, PixelLab adalah pilihan tepat bagi siapa pun yang ingin membuat desain visual yang kreatif, baik untuk media sosial, konten digital, hingga keperluan promosi.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Chent Official</h3>
+                    <p>Menyediakan aplikasi dan game MOD terbaru dengan kualitas terjamin dan update berkala.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Kategori</h3>
+                    <a href="#">Aplikasi MOD</a>
+                    <a href="#">Game MOD</a>
+                    <a href="#">Tools Android</a>
+                    <a href="#">Tutorial</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <p>Email: contact@Chent.com</p>
+                    <p>Telegram: @lyloud</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Chent Official. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for download button animation
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Create a temporary loading effect
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+                this.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.opacity = '1';
+                    alert('Download akan segera dimulai!');
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
